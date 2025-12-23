@@ -109,6 +109,12 @@ export const projectDetails: Record<string, ProjectDetails> = {
             alt: 'Training curves',
             caption: 'Training run showing reward improvement over episodes',
           },
+          {
+            type: 'image',
+            src: '/projects/catchbase/aso-conference-2024-presentation.jpg',
+            alt: 'Presenting Catchbase at ASO Conference 2024',
+            caption: 'Presenting Catchbase at the 2024 ASO Conference alongside Adobe\'s growth team',
+          },
         ],
       },
       {
