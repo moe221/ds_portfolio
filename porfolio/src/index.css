@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CSS Custom Properties (Design Tokens)
+   ============================================ */
+:root {
+  /* Layout spacing - consistent across all components */
+  --layout-max-width: 1280px;
+  --layout-padding: 80px;
+  --grid-line-color: rgba(0, 0, 0, 0.06);
+  --section-spacing: 120px;
+  --section-spacing-half: 60px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --layout-padding: 40px;
+    --section-spacing: 80px;
+    --section-spacing-half: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --layout-padding: 20px;
+    --section-spacing: 60px;
+    --section-spacing-half: 30px;
+  }
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-neutral-50;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+}
+
+/* ============================================
+   Layout System
+   ============================================ */
+@layer components {
+  /* Main layout container */
+  .layout-container {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Vertical grid lines */
+  .layout-line {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--grid-line-color);
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  .layout-line-left {
+    left: var(--layout-padding);
+  }
+
+  .layout-line-right {
+    right: var(--layout-padding);
+  }
+
+  /* On large screens, center the grid lines around max-width */
+  @media (min-width: 1441px) {
+    .layout-line-left {
+      left: calc((100vw - var(--layout-max-width)) / 2);
+    }
+    .layout-line-right {
+      right: calc((100vw - var(--layout-max-width)) / 2);
+    }
+  }
+
+  /* Content wrapper - aligns with grid lines */
+  .layout-content {
+    position: relative;
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding-left: var(--layout-padding);
+    padding-right: var(--layout-padding);
+  }
+
+  @media (min-width: 1441px) {
+    .layout-content {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  /* Section with horizontal divider line at top */
+  .section-divider {
+    position: relative;
+  }
+
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(-1 * var(--layout-padding));
+    right: calc(-1 * var(--layout-padding));
+    height: 1px;
+    background-color: var(--grid-line-color);
+    pointer-events: none;
+  }
+
+  @media (min-width: 1441px) {
+    .section-divider::before {
+      left: calc((var(--layout-max-width) - 100vw) / 2);
+      right: calc((var(--layout-max-width) - 100vw) / 2);
+    }
+  }
+
+  /* Section spacing utilities */
+  .section-spacing {
+    padding-top: var(--section-spacing);
+    padding-bottom: var(--section-spacing);
+  }
+
+  .section-spacing-half {
+    padding-top: var(--section-spacing-half);
+    padding-bottom: var(--section-spacing-half);
+  }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Infinite scroll animations for skills banner */
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes scrollReverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .animate-scroll-reverse {
+    animation: scrollReverse 30s linear infinite;
+  }
+
+  .animate-scroll:hover,
+  .animate-scroll-reverse:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* ============================================
+   Decorative Elements
+   ============================================ */
+@layer utilities {
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Decorative grid pattern background */
+  .decorative-pattern {
+    position: absolute;
+    opacity: 0.06;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(0, 0, 0, 0.5) 23px, rgba(0, 0, 0, 0.5) 24px),
+      repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(0, 0, 0, 0.5) 23px, rgba(0, 0, 0, 0.5) 24px);
+    background-size: 24px 24px;
+    left: 0;
+    right: 0;
+    z-index: 0;
+  }
+
+  .pattern-hero {
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    max-height: 600px;
+  }
+
+  .pattern-header {
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    height: 200px;
+  }
+
+  @media (max-width: 1024px) {
+    .pattern-hero {
+      max-height: 400px;
+    }
+    .pattern-header {
+      height: 150px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pattern-hero {
+      max-height: 300px;
+    }
+    .pattern-header {
+      height: 120px;
+    }
+  }
+}
+
+/* ============================================
+   Legacy utilities (kept for compatibility)
+   ============================================ */
+@layer utilities {
+  .grid-col-1 { width: calc(100% / 4); }
+  .grid-col-2 { width: calc(100% / 2); }
+  .grid-col-3 { width: calc(75%); }
+  .grid-col-4 { width: 100%; }
+  .grid-row-align { min-height: 200px; }
+}
