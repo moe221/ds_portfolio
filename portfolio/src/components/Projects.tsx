@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { ExternalLink, Github, ChevronRight, Brain, Eye, MessageSquare, TrendingUp, Activity, BarChart, Zap, LineChart, LucideIcon } from 'lucide-react';
 import ProjectModal, { ProjectDetails } from './ProjectModal';
 import { getProjectDetails } from '../data/projectDetails';
@@ -74,10 +74,30 @@ const Projects = () => {
         },
       ],
     },
+    'Causal Inference': {
+      icon: Activity,
+      thumbnails: [
+        '/projects/causal-impact/results.png',
+        '/projects/causal-impact/workshop-counterfactual.png',
+        '/projects/causal-impact/workshop-p-value.png',
+      ],
+      projects: [
+        {
+          title: 'Incrementality Measurement with Causal Impact',
+          description:
+            'Bayesian framework for measuring marketing incrementality when A/B testing is impossible. Led team workshop on methodology.',
+          tags: ['Python', 'Causal Impact', 'Bayesian', 'Statistics', 'Workshop'],
+          github: 'https://github.com/moe221/incrementality-measurement-causal-impact',
+          hasDetails: true,
+        },
+      ],
+    },
     'Deep Learning': {
       icon: Eye,
       thumbnails: [
         '/projects/diversity-cinema/dashboard.png',
+        '/projects/diversity-cinema/model-archeticture.png',
+        '/projects/diversity-cinema/process.png',
       ],
       projects: [
         {
@@ -159,26 +179,11 @@ const Projects = () => {
         },
       ],
     },
-    'Causal Inference': {
-      icon: Activity,
-      thumbnails: [
-        '/projects/causal-impact/results.png',
-      ],
-      projects: [
-        {
-          title: 'Incrementality Measurement with Causal Impact',
-          description:
-            'Bayesian framework for measuring marketing incrementality when A/B testing is impossible. Led team workshop on methodology.',
-          tags: ['Python', 'Causal Impact', 'Bayesian', 'Statistics', 'Workshop'],
-          github: 'https://github.com/moe221/incrementality-measurement-causal-impact',
-          hasDetails: true,
-        },
-      ],
-    },
     'Software Engineering': {
       icon: Zap,
       thumbnails: [
         '/projects/chess/screenshot.png',
+        '/projects/chess/chess_gif.gif',
       ],
       projects: [
         {
@@ -195,10 +200,19 @@ const Projects = () => {
 
   const categories = Object.keys(projectsByCategory);
 
+  // Distribute categories evenly across 3 columns for masonry effect
+  const distributedCategories = useMemo(() => {
+    const columns: string[][] = [[], [], []];
+    categories.forEach((category, index) => {
+      columns[index % 3].push(category);
+    });
+    return columns;
+  }, [categories]);
+
   return (
     <>
       <section id="projects" className="relative section-spacing section-divider">
-        <div>
+        <div style={{ paddingLeft: 'var(--layout-padding)', paddingRight: 'var(--layout-padding)' }}>
           <div className="relative text-center mb-12">
             <div className="decorative-pattern pattern-header"></div>
             <h2 className="relative z-10 text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
@@ -209,13 +223,15 @@ const Projects = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category) => {
+          <div className="projects-masonry-grid">
+            {distributedCategories.map((columnCategories, columnIndex) => (
+              <div key={columnIndex} className="projects-column">
+                {columnCategories.map((category) => {
               const isActive = activeCategory === category;
               const categoryData = projectsByCategory[category as keyof typeof projectsByCategory];
               const Icon = categoryData.icon;
               const projects = categoryData.projects;
-              const thumbnails = 'thumbnails' in categoryData ? (categoryData as any).thumbnails as string[] : [];
+              const thumbnails = categoryData.thumbnails || [];
 
               return (
                 <div
@@ -225,7 +241,7 @@ const Projects = () => {
                   className="relative min-h-[200px]"
                 >
                   <div
-                    className={`group p-6 bg-white rounded-xl border-2 transition-all duration-300 cursor-pointer flex flex-col min-h-[200px] ${
+                    className={`group p-6 bg-white rounded-xl border-2 transition-all duration-300 cursor-pointer flex flex-col ${
                       isActive
                         ? 'border-neutral-900 shadow-lg'
                         : 'border-neutral-200 hover:border-neutral-300 hover:shadow-md'
@@ -250,18 +266,21 @@ const Projects = () => {
                       />
                     </div>
 
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-semibold text-neutral-900">
+                    <div className="flex items-start justify-between mb-2 min-h-[3.5rem]">
+                      <h3 className="text-xl font-semibold text-neutral-900 line-clamp-2 flex-1 pr-2">
                         {category}
                       </h3>
                       {/* Thumbnails - right of title */}
                       {thumbnails.length > 0 && (
-                        <div className="flex items-center -space-x-3">
+                        <div className="flex items-center -space-x-2 flex-shrink-0">
                           {thumbnails.slice(0, 3).map((thumb, idx) => (
                             <div
                               key={idx}
-                              className="w-16 h-16 rounded-lg border-2 border-white shadow-sm overflow-hidden bg-neutral-100"
-                              style={{ zIndex: 3 - idx }}
+                              className="w-12 h-12 rounded-lg border-2 border-white overflow-hidden bg-neutral-100 shadow-lg"
+                              style={{ 
+                                zIndex: thumbnails.length - idx,
+                                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                              }}
                             >
                               <img
                                 src={thumb}
@@ -293,8 +312,8 @@ const Projects = () => {
                               className={`space-y-2 ${hasDetailedView ? 'cursor-pointer hover:bg-neutral-50 -mx-2 px-2 py-2 rounded-lg transition-colors' : ''}`}
                               onClick={hasDetailedView ? () => handleProjectClick(project.title) : undefined}
                             >
-                              <div className="flex items-center gap-2 flex-wrap">
-                                <h4 className="font-medium text-neutral-900 text-sm">
+                              <div className="flex items-start gap-2 flex-wrap">
+                                <h4 className="font-medium text-neutral-900 text-sm line-clamp-2 min-h-[2.5rem]">
                                   {project.title}
                                 </h4>
                                 {hasDetailedView && (
@@ -357,7 +376,9 @@ const Projects = () => {
                   </div>
                 </div>
               );
-            })}
+                })}
+              </div>
+            ))}
           </div>
         </div>
       </section>

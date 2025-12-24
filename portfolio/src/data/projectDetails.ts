@@ -1636,9 +1636,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
         ],
       },
     ],
-    links: {
-      github: 'https://github.com/moe221/incrementality-measurement-causal-impact',
-    },
+    links: {},
   },
 };
 

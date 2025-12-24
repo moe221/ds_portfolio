@@ -1,8 +1,9 @@
 const About = () => {
   return (
     <section id="about" className="relative section-spacing section-divider">
+      <div style={{ paddingLeft: 'var(--layout-padding)', paddingRight: 'var(--layout-padding)' }}>
       {/* Section header - full width for consistent grid pattern */}
-      <div className="relative text-center mb-16">
+      <div className="relative text-center mb-12">
         <div className="decorative-pattern pattern-header"></div>
         <h2 className="relative z-10 text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
           About Me
@@ -41,7 +42,7 @@ const About = () => {
               <p className="text-sm text-neutral-500 italic mt-0.5">/nou/ • adverb • at the present time or moment</p>
             </div>
             <p className="text-base text-neutral-700 leading-relaxed mb-3">
-              Based in Berlin, Germany and leading machine learning development at <strong>Phiture</strong>, where I built <strong>Catchbase</strong>—an autonomous Apple Ads optimization platform powered by reinforcement learning. The tool manages thousands in ad spend for clients like <strong>Adobe</strong>, <strong>Lego</strong>, and <strong>Pinger</strong>, making bidding decisions that outperform manual strategies.
+              Based in Berlin, Germany and working on machine learning development at <strong>Phiture</strong>, where I built <strong>Catchbase</strong>, an autonomous Apple Ads optimization platform powered by reinforcement learning. The tool manages thousands in ad spend for clients like <strong>Adobe</strong>, <strong>Lego</strong>, and <strong>Pinger</strong>, making bidding decisions that outperform manual strategies.
             </p>
             <p className="text-base text-neutral-700 leading-relaxed mb-4">
             I've shipped ML features that directly moved revenue metrics, presented research at the 2024 ASO Conference alongside <strong>Adobe's</strong> growth team, and conducted disaster and flood risk assessments for <strong>USAID</strong>.
@@ -86,6 +87,7 @@ const About = () => {
             </div>
           </div>
         </div>
+      </div>
     </section>
   );
 };

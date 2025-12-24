@@ -38,11 +38,15 @@ const SkillsBanner = () => {
   const row2Skills = skills.slice(15);
 
   return (
-    <section className="relative section-divider py-12 md:py-16">
+    <section className="relative section-spacing section-divider">
+      <div style={{ paddingLeft: 'var(--layout-padding)', paddingRight: 'var(--layout-padding)' }}>
       {/* Title */}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-8 md:mb-10">
-        A holistic approach to data science—from ideation to production.
-      </h2>
+      <div className="relative text-center mb-12">
+        <div className="decorative-pattern pattern-header"></div>
+        <h2 className="relative z-10 text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
+          A holistic approach to data science—from ideation to production.
+        </h2>
+      </div>
 
       {/* Scrolling skills with fade mask */}
       <div 
@@ -71,6 +75,7 @@ const SkillsBanner = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

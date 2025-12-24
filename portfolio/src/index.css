@@ -252,10 +252,9 @@
   }
 
   .pattern-header {
-    top: 50%;
+    top: calc(-1 * var(--section-spacing));
     left: 0;
     right: 0;
-    transform: translateY(-50%);
     height: 200px;
   }
 
@@ -264,6 +263,7 @@
       max-height: 400px;
     }
     .pattern-header {
+      top: calc(-1 * var(--section-spacing));
       height: 150px;
     }
   }
@@ -273,18 +273,40 @@
       max-height: 300px;
     }
     .pattern-header {
+      top: calc(-1 * var(--section-spacing));
       height: 120px;
     }
   }
 }
 
+
 /* ============================================
-   Legacy utilities (kept for compatibility)
+   Projects Masonry Grid Layout
+   Combines CSS Grid structure with column-based flow
    ============================================ */
-@layer utilities {
-  .grid-col-1 { width: calc(100% / 4); }
-  .grid-col-2 { width: calc(100% / 2); }
-  .grid-col-3 { width: calc(75%); }
-  .grid-col-4 { width: 100%; }
-  .grid-row-align { min-height: 200px; }
+.projects-masonry-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+  .projects-masonry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop/Mac: 3 columns */
+@media (min-width: 1024px) {
+  .projects-masonry-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.projects-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+

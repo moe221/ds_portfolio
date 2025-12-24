@@ -55,7 +55,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative section-spacing section-divider">
-      <div>
+      <div style={{ paddingLeft: 'var(--layout-padding)', paddingRight: 'var(--layout-padding)' }}>
         <div className="relative text-center mb-12">
           <div className="decorative-pattern pattern-header"></div>
           <h2 className="relative z-10 text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
@@ -69,7 +69,7 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-5 gap-8 items-start">
           <div className="lg:col-span-2 flex flex-col justify-between h-full gap-8">
-            <div>
+            <div className="p-8 bg-white rounded-xl border border-neutral-200">
               <h3 className="text-2xl font-semibold text-neutral-900 mb-6">
                 Contact Information
               </h3>

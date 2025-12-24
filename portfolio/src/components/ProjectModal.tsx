@@ -87,7 +87,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
       <div className="relative w-full max-w-5xl max-h-[92vh] my-6 mx-4 overflow-hidden rounded-2xl bg-white shadow-2xl animate-slide-up">
         {/* Header */}
         <div className="sticky top-0 z-10 bg-white border-b border-neutral-200">
-          <div className="flex items-start justify-between p-6">
+          <div className="flex items-start justify-between px-8 md:px-12 py-6">
             <div className="flex-1 pr-4">
               <span className="inline-block px-3 py-1 text-xs font-medium text-neutral-600 bg-neutral-100 rounded-full mb-2">
                 {project.category}
@@ -107,7 +107,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
           </div>
           
           {/* Quick Info Bar */}
-          <div className="flex flex-wrap items-center gap-4 px-6 pb-4 text-sm text-neutral-600">
+          <div className="flex flex-wrap items-center gap-4 px-8 md:px-12 pb-4 text-sm text-neutral-600">
             {project.period && (
               <span className="flex items-center gap-1.5">
                 <Calendar size={14} />
@@ -124,7 +124,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
         </div>
 
         {/* Scrollable Content */}
-        <div className="overflow-y-auto max-h-[calc(92vh-180px)] p-8">
+        <div className="overflow-y-auto max-h-[calc(92vh-180px)] px-8 md:px-12 py-8">
           {/* Summary */}
           <div className="mb-8">
             <p className="text-lg text-neutral-700 leading-relaxed">
@@ -241,7 +241,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
               {project.tags.map((tag, index) => (
                 <span 
                   key={index}
-                  className="px-3 py-1.5 bg-neutral-900 text-white text-sm font-medium rounded-lg"
+                  className="px-3 py-1.5 bg-neutral-100 text-neutral-700 text-sm font-medium rounded-lg"
                 >
                   {tag}
                 </span>
@@ -268,7 +268,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-neutral-900 font-medium rounded-lg border border-neutral-300 hover:bg-neutral-50 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-colors"
                 >
                   <Github size={18} />
                   View Code
@@ -279,7 +279,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   href={project.links.paper}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-neutral-900 font-medium rounded-lg border border-neutral-300 hover:bg-neutral-50 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-colors"
                 >
                   <ExternalLink size={18} />
                   Read Paper

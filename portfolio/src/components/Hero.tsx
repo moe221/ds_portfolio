@@ -6,8 +6,8 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center pt-20 md:pt-0"
     >
-      <div className="decorative-pattern pattern-hero"></div>
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full" style={{ paddingLeft: 'var(--layout-padding)', paddingRight: 'var(--layout-padding)' }}>
+        <div className="decorative-pattern pattern-hero"></div>
         <div className="grid md:grid-cols-4 gap-8 items-center">
           <div className="md:col-span-1 flex flex-col gap-6">
             <div className="relative z-10 w-full aspect-square rounded-2xl overflow-hidden border border-neutral-200 shadow-lg bg-white">
@@ -63,7 +63,7 @@ const Hero = () => {
             </div>
 
             <p className="text-base md:text-lg text-neutral-600 max-w-2xl">
-              I build machine learning systems for mobile growth and user retention. My work has                    supported teams at global brands like <strong>HBO</strong>, <strong>Adobe</strong>, and <strong>LEGO</strong>.
+              I build machine learning systems for mobile growth and user retention. My work has supported teams at global brands like <strong>HBO</strong>, <strong>Adobe</strong>, and <strong>LEGO</strong>.
             </p>
 
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
