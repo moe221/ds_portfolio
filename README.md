@@ -79,3 +79,5 @@ This portfolio is designed to be deployed on **Vercel**:
 
 © 2025 Mohamed Abuhalala. All rights reserved.
 
+
+

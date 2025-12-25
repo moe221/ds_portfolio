@@ -89,7 +89,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
         <div className="sticky top-0 z-10 bg-white border-b border-neutral-200">
           <div className="flex items-start justify-between px-8 md:px-12 py-6">
             <div className="flex-1 pr-4">
-              <span className="inline-block px-3 py-1 text-xs font-medium text-neutral-600 bg-neutral-100 rounded-full mb-2">
+              <span className="inline-block px-3 py-1 text-xs font-medium text-accent-700 bg-accent-100 rounded-full mb-2">
                 {project.category}
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-neutral-900">
@@ -138,11 +138,11 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
               {project.metrics.map((metric, index) => {
                 const Icon = metric.icon || Zap;
                 return (
-                  <div 
+                  <div
                     key={index}
                     className="p-4 bg-neutral-50 rounded-xl border border-neutral-100"
                   >
-                    <Icon size={20} className="text-neutral-400 mb-2" />
+                    <Icon size={20} className="text-accent-600 mb-2" />
                     <p className="text-2xl font-bold text-neutral-900">{metric.value}</p>
                     <p className="text-sm text-neutral-600">{metric.label}</p>
                   </div>
@@ -163,9 +163,9 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {stack.items.map((item, itemIndex) => (
-                        <span 
+                        <span
                           key={itemIndex}
-                          className="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-lg"
+                          className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-lg"
                         >
                           {item}
                         </span>
@@ -239,9 +239,9 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
             <h3 className="text-sm font-medium text-neutral-500 mb-3">Technologies & Methods</h3>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag, index) => (
-                <span 
+                <span
                   key={index}
-                  className="px-3 py-1.5 bg-neutral-100 text-neutral-700 text-sm font-medium rounded-lg"
+                  className="px-3 py-1.5 bg-accent-100 text-accent-700 text-sm font-medium rounded-lg"
                 >
                   {tag}
                 </span>
@@ -257,7 +257,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   href={project.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-700 text-white font-medium rounded-lg hover:bg-accent-800 transition-colors"
                 >
                   <ExternalLink size={18} />
                   View Live
@@ -268,7 +268,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-700 text-white font-medium rounded-lg hover:bg-accent-800 transition-colors"
                 >
                   <Github size={18} />
                   View Code
@@ -279,7 +279,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   href={project.links.paper}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-700 text-white font-medium rounded-lg hover:bg-accent-800 transition-colors"
                 >
                   <ExternalLink size={18} />
                   Read Paper

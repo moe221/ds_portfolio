@@ -23,7 +23,7 @@ const Hero = () => {
                 href="https://linkedin.com/in/mohamed-abuhalala"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-neutral-600 hover:text-accent-700 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={24} />
@@ -32,14 +32,14 @@ const Hero = () => {
                 href="https://github.com/mohamed-abuhalala"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-neutral-600 hover:text-accent-700 transition-colors"
                 aria-label="GitHub"
               >
                 <Github size={24} />
               </a>
               <a
                 href="mailto:myf.abuhalala@gmail.com"
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-neutral-600 hover:text-accent-700 transition-colors"
                 aria-label="Email"
               >
                 <Mail size={24} />
@@ -69,14 +69,14 @@ const Hero = () => {
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
               <a
                 href="#contact"
-                className="relative z-10 group inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-all"
+                className="relative z-10 group inline-flex items-center gap-2 px-6 py-3 bg-accent-700 text-white font-medium rounded-lg hover:bg-accent-800 transition-all"
               >
                 Book a Call
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#projects"
-                className="relative z-10 inline-flex items-center gap-2 px-6 py-3 bg-white text-neutral-900 font-medium rounded-lg border border-neutral-900 hover:bg-neutral-50 transition-all"
+                className="relative z-10 inline-flex items-center gap-2 px-6 py-3 bg-white text-accent-700 font-medium rounded-lg border border-accent-700 hover:bg-accent-50 transition-all"
               >
                 View Projects
               </a>

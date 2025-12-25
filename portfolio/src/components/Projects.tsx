@@ -243,13 +243,13 @@ const Projects = () => {
                   <div
                     className={`group p-6 bg-white rounded-xl border-2 transition-all duration-300 cursor-pointer flex flex-col ${
                       isActive
-                        ? 'border-neutral-900 shadow-lg'
+                        ? 'border-accent-700 shadow-lg'
                         : 'border-neutral-200 hover:border-neutral-300 hover:shadow-md'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-4">
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
-                        isActive ? 'bg-neutral-900' : 'bg-neutral-100'
+                        isActive ? 'bg-accent-700' : 'bg-neutral-100'
                       }`}>
                         <Icon
                           size={24}
@@ -260,7 +260,7 @@ const Projects = () => {
                       </div>
                       <ChevronRight
                         className={`transition-all ${
-                          isActive ? 'rotate-90 text-neutral-900' : 'text-neutral-400'
+                          isActive ? 'rotate-90 text-accent-700' : 'text-neutral-400'
                         }`}
                         size={20}
                       />
@@ -347,7 +347,7 @@ const Projects = () => {
                                       href={project.link}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="inline-flex items-center gap-1 text-xs text-neutral-600 hover:text-neutral-900 transition-colors"
+                                      className="inline-flex items-center gap-1 text-xs text-neutral-600 hover:text-accent-700 transition-colors"
                                       onClick={(e) => e.stopPropagation()}
                                     >
                                       <ExternalLink size={12} />
@@ -359,7 +359,7 @@ const Projects = () => {
                                       href={project.github}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="inline-flex items-center gap-1 text-xs text-neutral-600 hover:text-neutral-900 transition-colors"
+                                      className="inline-flex items-center gap-1 text-xs text-neutral-600 hover:text-accent-700 transition-colors"
                                       onClick={(e) => e.stopPropagation()}
                                     >
                                       <Github size={12} />

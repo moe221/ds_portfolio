@@ -214,7 +214,7 @@ const CV = () => {
           <a
             href="/CV-Moe-Abuhalala-DataScientist.pdf"
             download
-            className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-accent-700 text-white font-medium rounded-lg hover:bg-accent-800 transition-all"
           >
             <Download size={20} />
             Download Full CV
@@ -225,7 +225,7 @@ const CV = () => {
           <div className="lg:col-span-3 space-y-8">
             <div>
               <h3 className="text-2xl font-semibold text-neutral-900 mb-6 flex items-center gap-2">
-                <FileText size={24} />
+                <FileText size={24} className="text-accent-600" />
                 Experience
               </h3>
               <div className="space-y-6">
@@ -331,7 +331,7 @@ const CV = () => {
                   {skills.map((skill, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1.5 bg-neutral-100 text-neutral-700 text-sm font-medium rounded-lg"
+                      className="px-3 py-1.5 bg-accent-100 text-accent-700 text-sm font-medium rounded-lg"
                     >
                       {skill}
                     </span>

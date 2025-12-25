@@ -26,7 +26,7 @@ const Navigation = ({ scrolled }: NavigationProps) => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <a
             href="#home"
-            className="text-xl md:text-2xl font-bold text-neutral-900 hover:text-neutral-700 transition-colors"
+            className="text-xl md:text-2xl font-bold text-neutral-900 hover:text-accent-700 transition-colors"
           >
             MA
           </a>
@@ -36,14 +36,14 @@ const Navigation = ({ scrolled }: NavigationProps) => {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-sm font-medium text-neutral-600 hover:text-accent-700 transition-colors"
               >
                 {link.label}
               </a>
             ))}
             <a
               href="#contact"
-              className="px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-neutral-800 transition-all hover:scale-105"
+              className="px-5 py-2.5 bg-accent-700 text-white text-sm font-medium rounded-lg hover:bg-accent-800 transition-all hover:scale-105"
             >
               Book a Call
             </a>
@@ -67,7 +67,7 @@ const Navigation = ({ scrolled }: NavigationProps) => {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="block py-2 text-sm font-medium text-neutral-600 hover:text-accent-700 transition-colors"
               >
                 {link.label}
               </a>
@@ -75,7 +75,7 @@ const Navigation = ({ scrolled }: NavigationProps) => {
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-lg text-center hover:bg-neutral-800 transition-colors"
+              className="block w-full px-5 py-2.5 bg-accent-700 text-white text-sm font-medium rounded-lg text-center hover:bg-accent-800 transition-colors"
             >
               Book a Call
             </a>

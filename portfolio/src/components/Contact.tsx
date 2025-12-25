@@ -14,14 +14,30 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
 
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://formspree.io/f/mqekzkgd', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    }, 1000);
+    }
   };
 
   const handleChange = (
@@ -76,8 +92,8 @@ const Contact = () => {
               <div className="space-y-4">
                 {contactInfo.map((item, index) => (
                   <div key={index} className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-neutral-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <item.icon size={20} className="text-neutral-900" />
+                    <div className="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <item.icon size={20} className="text-accent-700" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-neutral-500 mb-1">
@@ -86,7 +102,7 @@ const Contact = () => {
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="text-neutral-900 hover:text-neutral-700 transition-colors"
+                          className="text-neutral-900 hover:text-accent-700 transition-colors"
                         >
                           {item.value}
                         </a>
@@ -144,7 +160,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-900 focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:ring-2 focus:ring-accent-700 focus:border-transparent outline-none transition-all"
                     placeholder="Your name"
                   />
                 </div>
@@ -163,7 +179,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-900 focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:ring-2 focus:ring-accent-700 focus:border-transparent outline-none transition-all"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -182,7 +198,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-900 focus:border-transparent outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:ring-2 focus:ring-accent-700 focus:border-transparent outline-none transition-all resize-none"
                     placeholder="Tell me about your project..."
                   />
                 </div>
@@ -190,7 +206,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent-700 text-white font-medium rounded-lg hover:bg-accent-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     'Sending...'
@@ -225,7 +241,7 @@ const Contact = () => {
                 href="https://linkedin.com/in/mohamed-abuhalala"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-neutral-600 hover:text-accent-700 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={24} />
@@ -234,14 +250,14 @@ const Contact = () => {
                 href="https://github.com/mohamed-abuhalala"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-neutral-600 hover:text-accent-700 transition-colors"
                 aria-label="GitHub"
               >
                 <Github size={24} />
               </a>
               <a
                 href="mailto:myf.abuhalala@gmail.com"
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-neutral-600 hover:text-accent-700 transition-colors"
                 aria-label="Email"
               >
                 <Mail size={24} />
